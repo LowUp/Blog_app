@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "author": "Random user 1",
+      "content": "Hey,\nWelcome to my blog",
+      "date": 1638641275179,
+      "id": 1
+    },
+    {
+      "author": "Anonymous",
+      "content": "Happy Saturday everybody,\n\nEnjoy\n\n",
+      "date": 1638642490444,
+      "id": 5
+    }
+  ]
+}
