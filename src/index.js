@@ -6,9 +6,26 @@ import reportWebVitals from './reportWebVitals';
 //styles
 import './Styles/index.scss';
 
+//redux
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import rootReducer from './reducer';
+import { getPosts } from './actions/post.action';
+
+const store = createStore (
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+store.dispatch(getPosts());
+
 ReactDOM.render(
   <React.StrictMode>
+  <Provider store={store}>
     <App />
+  </Provider>,
   </React.StrictMode>,
   document.getElementById('root')
 );

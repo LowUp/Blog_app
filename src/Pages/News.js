@@ -1,23 +1,38 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+
+
+//components
 import Article from "../Components/Article";
+
+//redux
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { addPosts, getPosts } from "../actions/post.action";
 
 const News = () =>{
 
     const [newsData, setNewsData] = useState([]);
-    const [newsAsc, setNewsAsc] = useState([]);
-    const [playOnce, setPlayOnce] = useState(true);
-    
     const [author, setAuthor] = useState("");
     const [message, setMessage] = useState("");
-
     const [error, setError] = useState(false);
 
-    const getData = () =>{
-        axios.get('http://localhost:3003/articles').then((res) => setNewsData(res.data));
-    } 
+    const data = useSelector((state) => state.postReducer);
 
-    const handleSubmit = (event) =>{
+    const dispatch = useDispatch();
+
+     const getData = () =>{  
+        const dataArray = Object.keys(data).map((i) => data[i]);
+         setNewsData(dataArray);  
+        } 
+
+    const handleSubmit = async (event) =>{
+        
+        const information = {
+            author,
+            content: message,
+            date: Date.now(),
+        };
+        
         event.preventDefault();
         
         if(message.length < 20)
@@ -26,35 +41,22 @@ const News = () =>{
 
         }
         else{
-        axios.post("http://localhost:3003/articles", {
-            author: author.length === 0 ? "Anonymous" : author,
-            content: message,
-            date: Date.now(),
-        }).then(() => {
+
+           await dispatch(addPosts(information));
+            dispatch(getPosts());
             setAuthor("");
             setMessage("");
             getData();
             setError(false);
-        });
 
             }
     };
 
-    useEffect(() =>{ 
-        
-        if(playOnce) 
-        {
-            getData();
-            setPlayOnce(false);
-        }
-        
-        const AscendingOrder = () =>{ 
-            setNewsAsc(newsData.sort((a,b) => a.date < b.date ? 1 : -1));
-        };
+    useEffect(() =>{
 
-        AscendingOrder();
+        getData();
 
-    }, [newsData, playOnce]);
+    }, [data])
 
     return(
         <div className="news-container">
@@ -82,10 +84,13 @@ const News = () =>{
             </form>
 
             <ul>
-            {newsAsc.map((article) =>(
-                <Article key={article.id} 
+            {newsData
+            .sort((a,b) => a.date < b.date ? 1 : -1)
+            .map((article) =>(
+                <Article 
+                key={article.id} 
                 message={article.content} 
-                author={article.author} 
+                author={article.author === "" ? "Anonymous" : article.author} 
                 date={article.date} 
                 id={article.id}
                 />
