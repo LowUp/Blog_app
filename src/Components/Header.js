@@ -25,7 +25,7 @@ const Header = () =>{
         <Navigation/>
         <Routes>
 
-        <Route path="/" element={<News/>}/>
+        <Route path="/" element={<News key={1}/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="*" element={<Error/>}/>
 

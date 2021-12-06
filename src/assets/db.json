@@ -1,22 +1,16 @@
 {
   "articles": [
     {
-      "author": "Random user 1",
-      "content": "Hey,\nWelcome to my blog",
-      "date": 1638641275179,
-      "id": 1
-    },
-    {
-      "author": "Anonymous",
-      "content": "Happy Saturday everybody,\n\nEnjoy\n\n",
-      "date": 1638642490444,
-      "id": 5
-    },
-    {
-      "author": "Hello",
-      "content": "Hello World, it is me",
-      "date": 1638728658316,
+      "author": "Hello World",
+      "content": "Halo Infinite is live !!!",
+      "date": 1638821003297,
       "id": 6
+    },
+    {
+      "author": "Hi",
+      "content": "Yo, Nice to see you here. Please make yourself comfortable. Feel free to write anything. However, please avoid writing anything inappropriate.",
+      "date": 1638820996157,
+      "id": 7
     }
   ]
 }

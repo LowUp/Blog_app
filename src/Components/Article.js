@@ -1,6 +1,11 @@
 import React, {useState} from "react";
-import axios from "axios";
+
+//components
 import DeleteArticle from "./DeleteArticle";
+
+//redux
+import { useDispatch } from "react-redux";
+import { editPosts, getPosts } from "../actions/post.action";
 
 const Article = (props) =>{
 
@@ -8,6 +13,8 @@ const Article = (props) =>{
     const [Editing, setEditing] = useState(false);
     const [editContent, setEditContent] = useState(message);
     const [error, setError] = useState(false);
+    
+    const dispatch = useDispatch();
 
     const dateFormat = (date) =>{
         let newDate = new Date(date).toLocaleTimeString("en-EN", {
@@ -21,25 +28,26 @@ const Article = (props) =>{
         return newDate;
     }
 
-    const handleEdit = () =>{
+    const handleEdit = async () =>{
 
         const data = {
             author,
             content: editContent,
             date : Date.now(),
+            id
         }
 
-        if(editContent.length < 20)
+        if(message.length < 20)
         {
             setError(true);
         }
         else
         {
-            axios.put('http://localhost:3003/articles/' + id, data)
-            .then(() =>{
+            await dispatch(editPosts(data));
+            dispatch(getPosts());
             setEditing(false);
             setError(false);
-            }); 
+            console.log(editContent);
         }
           
     }
@@ -57,12 +65,12 @@ const Article = (props) =>{
             <textarea
             style={error ? {border:"1px solid red"} : {border:"1px solid black"}}
             autoFocus 
-            defaultValue={editContent} 
+            defaultValue={message} 
             onChange={(e) => setEditContent(e.target.value)} />
             
 
          ):(
-            <p>{editContent}</p>
+            <p>{message}</p>
              
          )}
 

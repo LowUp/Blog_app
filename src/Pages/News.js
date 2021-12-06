@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 //components
 import Article from "../Components/Article";
 
@@ -20,10 +19,11 @@ const News = () =>{
 
     const dispatch = useDispatch();
 
-     const getData = () =>{  
-        const dataArray = Object.keys(data).map((i) => data[i]);
-         setNewsData(dataArray);  
-        } 
+      const getData = () =>
+      {  
+          const dataArray = Object.keys(data).map((i) => data[i]);
+          setNewsData(dataArray);  
+      } 
 
     const handleSubmit = async (event) =>{
         
@@ -52,11 +52,11 @@ const News = () =>{
             }
     };
 
-    useEffect(() =>{
+     useEffect(() =>{
 
-        getData();
+         getData();
 
-    }, [data])
+     }, [data])
 
     return(
         <div className="news-container">
@@ -86,9 +86,9 @@ const News = () =>{
             <ul>
             {newsData
             .sort((a,b) => a.date < b.date ? 1 : -1)
-            .map((article) =>(
+            .map((article, index) =>(
                 <Article 
-                key={article.id} 
+                key={index} 
                 message={article.content} 
                 author={article.author === "" ? "Anonymous" : article.author} 
                 date={article.date} 
