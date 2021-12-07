@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {
+      "author": "Hello World",
+      "content": "Halo Infinite is live. So, go buy it and stop playing !!",
+      "date": 1638896995398,
+      "id": 6
+    },
+    {
+      "author": "Hi",
+      "content": "Yo, Nice to see you here. Please make yourself comfortable. Feel free to write anything. However, please avoid writing anything inappropriate.",
+      "date": 1638897850312,
+      "id": 7
+    }
+  ]
+}

@@ -55,6 +55,7 @@ const News = () =>{
      useEffect(() =>{
 
          getData();
+        //console.log(newsData);
 
      }, [data])
 

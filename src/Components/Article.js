@@ -47,7 +47,6 @@ const Article = (props) =>{
             dispatch(getPosts());
             setEditing(false);
             setError(false);
-            console.log(editContent);
         }
           
     }

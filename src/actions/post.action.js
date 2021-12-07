@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://localhost:3003/articles/';
+const url = 'http://localhost:3003/articles';
 
 export const GET_POSTS = "GET_POSTS";
 export const ADD_POSTS = "ADD_POSTS";
@@ -38,7 +38,7 @@ export const addPosts = (data) =>{
 export const editPosts = (data) =>{
 
     return (dispatch) =>{
-        return axios.put(url + data.id, {...data})
+        return axios.put(url + "/" + data.id, {...data})
         .then((res) =>{
             dispatch({type: EDIT_POSTS, payload: {...data}})
         })
@@ -50,7 +50,7 @@ export const editPosts = (data) =>{
 export const deletePosts = (data_id) =>{
 
     return (dispatch) =>{
-        return axios.delete(url + data_id)
+        return axios.delete(url + "/" + data_id)
         .then((res) =>{
             dispatch({type: DELETE_POSTS, payload: data_id})
         })
