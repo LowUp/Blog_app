@@ -37,7 +37,7 @@ const Article = (props) =>{
             id
         }
 
-        if(message.length < 20)
+        if(editContent.length < 20)
         {
             setError(true);
         }

@@ -22,7 +22,7 @@ export const getPosts = () =>{
 export const addPosts = (data) =>{
 
     return (dispatch) =>{
-        return axios.post(url, {
+        return axios.post(url + "/", {
             author: data.author.length === 0 ? "Anonymous" : data.author,
             content: data.content,
             date: data.date,

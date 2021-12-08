@@ -23,7 +23,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -47,20 +47,12 @@
       "last 1 safari version"
     ]
   },
-  "description": "React app that allows the user to post, edit and delete articles using a simulated back-end with a JSON server.",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LowUp/Blog_app.git"
+  "devDependencies": {
+    "json-server": "^0.17.0"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LowUp/Blog_app/issues"
-  },
-  "homepage": "https://github.com/LowUp/Blog_app#readme",
-  "devDependencies": {
-    "json-server": "^0.17.0"
-  }
+  "license": "ISC"
 }
