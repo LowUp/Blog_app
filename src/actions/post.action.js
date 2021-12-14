@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'http://localhost:3003/articles';
+const url = 'https://articles-api-lowup.herokuapp.com/articles';
 
 export const GET_POSTS = "GET_POSTS";
 export const ADD_POSTS = "ADD_POSTS";
