@@ -54,7 +54,13 @@ const News = () =>{
 
      useEffect(() =>{
 
-         getData();
+        const getData1 = () =>
+      {  
+          const dataArray = Object.keys(data).map((i) => data[i]);
+          setNewsData(dataArray);  
+      }
+
+         getData1();
         //console.log(newsData);
 
      }, [data])
